@@ -1,0 +1,24 @@
+<header class="header">
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <a routerLink="/" class="logo">
+          <i class="fas fa-laptop-code"></i>
+          TechBlog
+        </a>
+      </div>
+      <ul class="nav-menu">
+        <li><a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a></li>
+        <li><a routerLink="/about" routerLinkActive="active" class="nav-link">About</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a></li>
+        <li><a routerLink="/privacy" routerLinkActive="active" class="nav-link">Privacy</a></li>
+        <li><a routerLink="/terms" routerLinkActive="active" class="nav-link">Terms</a></li>
+      </ul>
+      <div class="hamburger" (click)="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+</header>

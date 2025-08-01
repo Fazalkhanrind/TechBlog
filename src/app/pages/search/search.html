@@ -1,0 +1,185 @@
+<!-- Search Results Page with Ads -->
+<div class="search-page">
+  <!-- Top Banner Ad -->
+  <section class="ad-section search-top-ad">
+    <div class="container">
+      <div class="ad-container">
+        <div class="ad-label">Advertisement</div>
+        <div class="google-ad" id="ad-search-top">
+          <!-- 728x90 Top Banner -->
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px"
+               data-ad-client="ca-pub-XXXXXXXXXX"
+               data-ad-slot="XXXXXXXXXX"></ins>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="search-layout">
+      <main class="search-main">
+        <!-- Search Header -->
+        <header class="search-header">
+          <h1>Search Results</h1>
+          <p>Found {{ totalResults }} results for "<strong>{{ searchQuery }}</strong>"</p>
+          
+          <!-- Search Form -->
+          <form class="search-form" (submit)="performSearch()">
+            <input type="text" [(ngModel)]="searchQuery" placeholder="Search articles...">
+            <button type="submit">🔍 Search</button>
+          </form>
+        </header>
+
+        <!-- Ad After Search -->
+        <section class="ad-section search-header-ad">
+          <div class="ad-container">
+            <div class="ad-label">Sponsored Results</div>
+            <div class="google-ad" id="ad-search-header">
+              <!-- 336x280 Large Rectangle -->
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:336px;height:280px"
+                   data-ad-client="ca-pub-XXXXXXXXXX"
+                   data-ad-slot="XXXXXXXXXX"></ins>
+            </div>
+          </div>
+        </section>
+
+        <!-- Search Filters -->
+        <div class="search-filters">
+          <button [class.active]="filter === 'all'" (click)="setFilter('all')">All Results</button>
+          <button [class.active]="filter === 'recent'" (click)="setFilter('recent')">Recent</button>
+          <button [class.active]="filter === 'popular'" (click)="setFilter('popular')">Popular</button>
+        </div>
+
+        <!-- Search Results -->
+        <div class="search-results">
+          @if (searchResults.length > 0) {
+            @for (result of searchResults; track result.id; let i = $index) {
+              <!-- Result Item -->
+              <div class="search-result-item">
+                <div class="result-image">
+                  <img [src]="result.imageUrl" [alt]="result.title">
+                </div>
+                <div class="result-content">
+                  <h3><a [href]="'/posts/' + result.slug">{{ result.title }}</a></h3>
+                  <p>{{ result.excerpt }}</p>
+                  <div class="result-meta">
+                    <span class="category">{{ result.category }}</span>
+                    <span class="date">{{ result.publishDate | date:'MMM d, y' }}</span>
+                    <span class="author">By {{ result.author }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ad After Every 4th Result -->
+              @if ((i + 1) % 4 === 0) {
+                <div class="ad-container search-results-ad">
+                  <div class="ad-label">Advertisement</div>
+                  <div class="google-ad" [id]="'ad-search-result-' + (i + 1)">
+                    <!-- 468x60 Banner -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:468px;height:60px"
+                         data-ad-client="ca-pub-XXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"></ins>
+                  </div>
+                </div>
+              }
+
+              <!-- Large Ad After 8th Result -->
+              @if ((i + 1) % 8 === 0) {
+                <div class="ad-container search-large-ad">
+                  <div class="ad-label">Sponsored Content</div>
+                  <div class="google-ad" [id]="'ad-search-large-' + (i + 1)">
+                    <!-- 970x250 Billboard -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:970px;height:250px"
+                         data-ad-client="ca-pub-XXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"></ins>
+                  </div>
+                </div>
+              }
+            }
+          } @else {
+            <div class="no-results">
+              <h3>No results found</h3>
+              <p>Try different keywords or browse our categories below.</p>
+            </div>
+          }
+        </div>
+
+        <!-- Load More -->
+        @if (hasMoreResults) {
+          <div class="load-more">
+            <button (click)="loadMoreResults()">Load More Results</button>
+          </div>
+        }
+      </main>
+
+      <!-- Sidebar with Ads -->
+      <aside class="search-sidebar">
+        <!-- Sidebar Ad 1 -->
+        <div class="widget ad-widget">
+          <div class="ad-label">Sponsored</div>
+          <div class="google-ad" id="ad-search-sidebar-1">
+            <!-- 300x600 Half Page -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:600px"
+                 data-ad-client="ca-pub-XXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"></ins>
+          </div>
+        </div>
+
+        <!-- Popular Searches -->
+        <div class="widget popular-searches-widget">
+          <h4>Popular Searches</h4>
+          <div class="popular-searches">
+            @for (search of popularSearches; track search) {
+              <a [href]="'/search?q=' + search" class="search-tag">{{ search }}</a>
+            }
+          </div>
+        </div>
+
+        <!-- Sidebar Ad 2 -->
+        <div class="widget ad-widget-small">
+          <div class="ad-label">Advertisement</div>
+          <div class="google-ad" id="ad-search-sidebar-2">
+            <!-- 250x250 Square -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:250px;height:250px"
+                 data-ad-client="ca-pub-XXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"></ins>
+          </div>
+        </div>
+
+        <!-- Browse Categories -->
+        <div class="widget categories-widget">
+          <h4>Browse Categories</h4>
+          <div class="category-list">
+            @for (category of categories; track category.name) {
+              <a [href]="'/category/' + category.slug" class="category-link">
+                {{ category.name }} ({{ category.count }})
+              </a>
+            }
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Bottom Ad -->
+  <section class="ad-section search-bottom-ad">
+    <div class="container">
+      <div class="ad-container">
+        <div class="ad-label">Advertisement</div>
+        <div class="google-ad" id="ad-search-bottom">
+          <!-- 728x90 Bottom Banner -->
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px"
+               data-ad-client="ca-pub-XXXXXXXXXX"
+               data-ad-slot="XXXXXXXXXX"></ins>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

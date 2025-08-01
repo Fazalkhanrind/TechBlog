@@ -1,0 +1,209 @@
+<div class="contact-page">
+  <!-- Top Banner Ad -->
+  <section class="ad-section contact-top-ad">
+    <div class="container">
+      <div class="ad-container">
+        <div class="ad-label">Advertisement</div>
+        <div class="google-ad" id="ad-contact-top">
+          <!-- 728x90 Top Banner -->
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px"
+               data-ad-client="ca-pub-XXXXXXXXXX"
+               data-ad-slot="XXXXXXXXXX"></ins>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>Contact Us</h1>
+      <p class="page-subtitle">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+    </div>
+    
+    <div class="contact-content">
+      <!-- Ad After Header -->
+      <section class="ad-section contact-header-ad">
+        <div class="ad-container">
+          <div class="ad-label">Sponsored</div>
+          <div class="google-ad" id="ad-contact-header">
+            <!-- 300x250 Medium Rectangle -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:250px"
+                 data-ad-client="ca-pub-XXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"></ins>
+          </div>
+        </div>
+      </section>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Get in Touch</h2>
+          <p>Have a question, suggestion, or just want to say hello? We're here to help and would love to hear from you.</p>
+          
+          <div class="contact-methods">
+            <div class="contact-method">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h4>Email Us</h4>
+                <p>contact&#64;techblog.com</p>
+                <span>We'll respond within 24 hours</span>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <i class="fas fa-clock"></i>
+              <div>
+                <h4>Response Time</h4>
+                <p>24-48 hours</p>
+                <span>Monday to Friday</span>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h4>Location</h4>
+                <p>Global</p>
+                <span>Remote team worldwide</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="social-contact">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form-container">
+          <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+            <h2>Send us a Message</h2>
+            
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                [(ngModel)]="formData.name" 
+                required 
+                #name="ngModel"
+                class="form-control">
+              <div class="error-message" *ngIf="name.invalid && name.touched">
+                Name is required
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                [(ngModel)]="formData.email" 
+                required 
+                email
+                #email="ngModel"
+                class="form-control">
+              <div class="error-message" *ngIf="email.invalid && email.touched">
+                <span *ngIf="email.errors?.['required']">Email is required</span>
+                <span *ngIf="email.errors?.['email']">Please enter a valid email</span>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Subject *</label>
+              <select 
+                id="subject" 
+                name="subject" 
+                [(ngModel)]="formData.subject" 
+                required
+                #subject="ngModel"
+                class="form-control">
+                <option value="">Select a subject</option>
+                <option value="general">General Inquiry</option>
+                <option value="technical">Technical Support</option>
+                <option value="content">Content Suggestion</option>
+                <option value="partnership">Partnership</option>
+                <option value="feedback">Feedback</option>
+                <option value="other">Other</option>
+              </select>
+              <div class="error-message" *ngIf="subject.invalid && subject.touched">
+                Please select a subject
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="6" 
+                [(ngModel)]="formData.message" 
+                required
+                #message="ngModel"
+                class="form-control"
+                placeholder="Tell us how we can help you..."></textarea>
+              <div class="error-message" *ngIf="message.invalid && message.touched">
+                Message is required
+              </div>
+            </div>
+            
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input 
+                  type="checkbox" 
+                  name="newsletter" 
+                  [(ngModel)]="formData.newsletter">
+                <span class="checkmark"></span>
+                Subscribe to our newsletter for the latest tech updates
+              </label>
+            </div>
+            
+            <button 
+              type="submit" 
+              class="btn btn-primary btn-submit"
+              [disabled]="contactForm.invalid || isSubmitting">
+              <i class="fas fa-paper-plane" *ngIf="!isSubmitting"></i>
+              <i class="fas fa-spinner fa-spin" *ngIf="isSubmitting"></i>
+              {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+            </button>
+            
+            <div class="success-message" *ngIf="isSubmitted">
+              <i class="fas fa-check-circle"></i>
+              Thank you for your message! We'll get back to you soon.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4>How often do you publish new content?</h4>
+          <p>We publish new articles and tutorials multiple times per week, ensuring fresh and relevant content for our readers.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can I suggest a topic for an article?</h4>
+          <p>Absolutely! We welcome topic suggestions from our community. Use the contact form above with "Content Suggestion" as the subject.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Do you accept guest posts?</h4>
+          <p>We occasionally accept high-quality guest posts from industry experts. Please reach out with your proposal and writing samples.</p>
+        </div>
+        <div class="faq-item">
+          <h4>How can I report an error in an article?</h4>
+          <p>If you notice any errors or outdated information, please contact us immediately so we can correct it and maintain content quality.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

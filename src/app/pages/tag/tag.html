@@ -1,0 +1,204 @@
+<!-- Tag Page with Progressive Ads -->
+<div class="tag-page">
+  <!-- Top Banner Ad -->
+  <section class="ad-section tag-top-ad">
+    <div class="container">
+      <div class="ad-container">
+        <div class="ad-label">Advertisement</div>
+        <div class="google-ad" id="ad-tag-top">
+          <!-- 970x250 Billboard -->
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:970px;height:250px"
+               data-ad-client="ca-pub-XXXXXXXXXX"
+               data-ad-slot="XXXXXXXXXX"></ins>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="tag-layout">
+      <main class="tag-main">
+        <div class="page-header">
+          <h1>Posts tagged with "{{ currentTag }}"</h1>
+          <p class="tag-description">{{ tagDescription }}</p>
+          <div class="tag-stats">
+            <span class="post-count">{{ totalPosts }} {{ totalPosts === 1 ? 'post' : 'posts' }}</span>
+            <span class="tag-followers">{{ tagFollowers }} followers</span>
+          </div>
+        </div>
+
+        <!-- Ad After Header -->
+        <section class="ad-section tag-header-ad">
+          <div class="ad-container">
+            <div class="ad-label">Sponsored</div>
+            <div class="google-ad" id="ad-tag-header">
+              <!-- 728x90 Leaderboard -->
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:728px;height:90px"
+                   data-ad-client="ca-pub-XXXXXXXXXX"
+                   data-ad-slot="XXXXXXXXXX"></ins>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related Tags -->
+        <div class="related-tags">
+          <h3>Related Tags</h3>
+          <div class="tag-cloud">
+            <a href="#" class="tag-item" *ngFor="let tag of relatedTags" 
+               [class.active]="tag.name === currentTag">
+              {{ tag.name }} <span class="tag-count">({{ tag.count }})</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tag Posts Grid -->
+        <div class="tag-posts">
+          <article class="tag-post" *ngFor="let post of tagPosts; let i = index">
+            <div class="post-thumbnail">
+              <img [src]="post.thumbnail" [alt]="post.title" (error)="onImageError($event)">
+              <div class="post-overlay">
+                <span class="post-category">{{ post.category }}</span>
+                <span class="post-read-time">{{ post.readTime }} min</span>
+              </div>
+            </div>
+            <div class="post-content">
+              <h3><a [routerLink]="['/blog', post.slug]">{{ post.title }}</a></h3>
+              <p class="post-excerpt">{{ post.excerpt }}</p>
+              <div class="post-meta">
+                <div class="post-author">
+                  <img [src]="post.author.avatar" [alt]="post.author.name" (error)="onImageError($event)">
+                  <span>{{ post.author.name }}</span>
+                </div>
+                <span class="post-date">{{ post.publishedAt | date:'MMM d, y' }}</span>
+              </div>
+              <div class="post-tags">
+                <a href="#" class="post-tag" *ngFor="let tag of post.tags">{{ tag }}</a>
+              </div>
+            </div>
+
+            <!-- Progressive Ads After Every 3rd Post -->
+            <section *ngIf="(i + 1) % 3 === 0" class="ad-section tag-grid-ad">
+              <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div class="google-ad" id="ad-tag-grid-{{i}}">
+                  <!-- 336x280 Large Rectangle -->
+                  <ins class="adsbygoogle"
+                       style="display:inline-block;width:336px;height:280px"
+                       data-ad-client="ca-pub-XXXXXXXXXX"
+                       data-ad-slot="XXXXXXXXXX"></ins>
+                </div>
+              </div>
+            </section>
+
+            <!-- Large Billboard After Every 6th Post -->
+            <section *ngIf="(i + 1) % 6 === 0" class="ad-section tag-large-ad">
+              <div class="ad-container full-width">
+                <div class="ad-label">Sponsored Content</div>
+                <div class="google-ad" id="ad-tag-large-{{i}}">
+                  <!-- 970x250 Billboard -->
+                  <ins class="adsbygoogle"
+                       style="display:inline-block;width:970px;height:250px"
+                       data-ad-client="ca-pub-XXXXXXXXXX"
+                       data-ad-slot="XXXXXXXXXX"></ins>
+                </div>
+              </div>
+            </section>
+          </article>
+        </div>
+
+        <!-- Load More Section -->
+        <div class="load-more-section" *ngIf="hasMorePosts">
+          <button class="load-more-btn" (click)="loadMorePosts()" [disabled]="isLoading">
+            <span *ngIf="!isLoading">Load More Posts</span>
+            <span *ngIf="isLoading">Loading...</span>
+          </button>
+        </div>
+
+        <!-- Bottom Banner Ad -->
+        <section class="ad-section tag-bottom-ad">
+          <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <div class="google-ad" id="ad-tag-bottom">
+              <!-- 728x90 Bottom Banner -->
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:728px;height:90px"
+                   data-ad-client="ca-pub-XXXXXXXXXX"
+                   data-ad-slot="XXXXXXXXXX"></ins>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="tag-sidebar">
+        <!-- Sidebar Ad 1 -->
+        <section class="ad-section tag-sidebar-ad-1">
+          <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <div class="google-ad" id="ad-tag-sidebar-1">
+              <!-- 300x600 Half Page -->
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:300px;height:600px"
+                   data-ad-client="ca-pub-XXXXXXXXXX"
+                   data-ad-slot="XXXXXXXXXX"></ins>
+            </div>
+          </div>
+        </section>
+
+        <!-- Popular Tags Widget -->
+        <div class="widget popular-tags">
+          <h3>Popular Tags</h3>
+          <div class="tag-list">
+            <a href="#" class="popular-tag" *ngFor="let tag of popularTags">
+              <span class="tag-name">{{ tag.name }}</span>
+              <span class="tag-posts">{{ tag.postCount }} posts</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Sidebar Ad 2 -->
+        <section class="ad-section tag-sidebar-ad-2">
+          <div class="ad-container">
+            <div class="ad-label">Sponsored</div>
+            <div class="google-ad" id="ad-tag-sidebar-2">
+              <!-- 300x250 Medium Rectangle -->
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:300px;height:250px"
+                   data-ad-client="ca-pub-XXXXXXXXXX"
+                   data-ad-slot="XXXXXXXXXX"></ins>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tag Newsletter -->
+        <div class="widget tag-newsletter">
+          <h3>Get {{ currentTag }} Updates</h3>
+          <p>Subscribe to get the latest {{ currentTag }} posts delivered to your inbox.</p>
+          <form class="newsletter-form" (ngSubmit)="subscribeToTag()">
+            <input type="email" placeholder="Your email address" [(ngModel)]="subscriberEmail" name="email" required>
+            <button type="submit" [disabled]="isSubscribing">
+              <span *ngIf="!isSubscribing">Subscribe</span>
+              <span *ngIf="isSubscribing">Subscribing...</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Sidebar Ad 3 -->
+        <section class="ad-section tag-sidebar-ad-3">
+          <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <div class="google-ad" id="ad-tag-sidebar-3">
+              <!-- 250x250 Square -->
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:250px;height:250px"
+                   data-ad-client="ca-pub-XXXXXXXXXX"
+                   data-ad-slot="XXXXXXXXXX"></ins>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+</div>

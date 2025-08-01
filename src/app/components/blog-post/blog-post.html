@@ -1,0 +1,15 @@
+<article class="post-card" [class.featured]="featured">
+  <div class="post-image">
+    <img [src]="post.imageUrl" [alt]="post.title" loading="lazy">
+    <div class="post-category">{{ post.category }}</div>
+  </div>
+  <div class="post-content">
+    <h3><a [href]="'/posts/' + post.slug">{{ post.title }}</a></h3>
+    <p>{{ post.excerpt }}</p>
+    <div class="post-meta">
+      <span class="author">By {{ post.author }}</span>
+      <span class="date">{{ post.publishDate | date }}</span>
+      <span class="read-time">{{ post.readTime }} min read</span>
+    </div>
+  </div>
+</article>

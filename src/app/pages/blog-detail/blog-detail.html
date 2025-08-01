@@ -1,0 +1,251 @@
+<!-- Blog Post Detail Page with Multiple Ads -->
+<div class="blog-post-page">
+  <!-- Top Ad - Before Content -->
+  <section class="ad-section post-top-ad">
+    <div class="container">
+      <div class="ad-container">
+        <div class="ad-label">Advertisement</div>
+        <div class="google-ad" id="ad-post-top">
+          <!-- 728x90 Top Banner -->
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px"
+               data-ad-client="ca-pub-XXXXXXXXXX"
+               data-ad-slot="XXXXXXXXXX"></ins>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="post-layout">
+      <!-- Main Content -->
+      <main class="post-main">
+        <article class="blog-post">
+          <!-- Post Header -->
+          <header class="post-header">
+            <div class="post-category-tag">{{ post.category }}</div>
+            <h1 class="post-title">{{ post.title }}</h1>
+            <div class="post-meta">
+              <div class="author-info">
+                <img [src]="post.authorAvatar" [alt]="post.author" class="author-avatar">
+                <div class="author-details">
+                  <span class="author-name">{{ post.author }}</span>
+                  <span class="post-date">{{ post.publishDate | date:'MMM d, y' }}</span>
+                </div>
+              </div>
+              <div class="post-stats">
+                <span class="read-time">{{ post.readTime }} min read</span>
+                <span class="views">{{ post.views || 0 }} views</span>
+              </div>
+            </div>
+          </header>
+
+          <!-- Ad After Title -->
+          <section class="ad-section post-title-ad">
+            <div class="ad-container">
+              <div class="ad-label">Advertisement</div>
+              <div class="google-ad" id="ad-post-title">
+                <!-- 336x280 Large Rectangle -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:336px;height:280px"
+                     data-ad-client="ca-pub-XXXXXXXXXX"
+                     data-ad-slot="XXXXXXXXXX"></ins>
+              </div>
+            </div>
+          </section>
+
+          <!-- Featured Image -->
+          <div class="post-featured-image">
+            <img [src]="post.imageUrl" [alt]="post.title" loading="lazy">
+          </div>
+
+          <!-- Post Content -->
+          <div class="post-content" [innerHTML]="post.content">
+            <!-- Content will be injected here -->
+          </div>
+
+          <!-- Ad in Middle of Content -->
+          <section class="ad-section post-content-ad">
+            <div class="ad-container">
+              <div class="ad-label">Sponsored Content</div>
+              <div class="google-ad" id="ad-post-content">
+                <!-- 300x250 Medium Rectangle -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:300px;height:250px"
+                     data-ad-client="ca-pub-XXXXXXXXXX"
+                     data-ad-slot="XXXXXXXXXX"></ins>
+              </div>
+            </div>
+          </section>
+
+          <!-- Post Tags -->
+          <div class="post-tags">
+            <span class="tags-label">Tags:</span>
+            @for (tag of post.tags; track tag) {
+              <span class="tag">{{ tag }}</span>
+            }
+          </div>
+
+          <!-- Social Share -->
+          <div class="social-share">
+            <h4>Share this article:</h4>
+            <div class="share-buttons">
+              <button class="share-btn facebook">📘 Facebook</button>
+              <button class="share-btn twitter">🐦 Twitter</button>
+              <button class="share-btn linkedin">💼 LinkedIn</button>
+              <button class="share-btn whatsapp">💬 WhatsApp</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ad After Content -->
+        <section class="ad-section post-bottom-ad">
+          <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <div class="google-ad" id="ad-post-bottom">
+              <!-- 970x250 Billboard -->
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:970px;height:250px"
+                   data-ad-client="ca-pub-XXXXXXXXXX"
+                   data-ad-slot="XXXXXXXXXX"></ins>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related Posts -->
+        <section class="related-posts">
+          <h3>Related Articles</h3>
+          <div class="related-grid">
+            @for (relatedPost of relatedPosts; track relatedPost.id) {
+              <div class="related-card">
+                <img [src]="relatedPost.imageUrl" [alt]="relatedPost.title">
+                <h4><a [href]="'/posts/' + relatedPost.slug">{{ relatedPost.title }}</a></h4>
+                <span class="related-date">{{ relatedPost.publishDate | date:'MMM d' }}</span>
+              </div>
+            }
+          </div>
+        </section>
+
+        <!-- Comments Section -->
+        <section class="comments-section">
+          <h3>Comments ({{ comments.length }})</h3>
+          
+          <!-- Ad Before Comments -->
+          <div class="ad-section comments-top-ad">
+            <div class="ad-container">
+              <div class="ad-label">Advertisement</div>
+              <div class="google-ad" id="ad-comments-top">
+                <!-- 468x60 Banner -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:468px;height:60px"
+                     data-ad-client="ca-pub-XXXXXXXXXX"
+                     data-ad-slot="XXXXXXXXXX"></ins>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comment Form -->
+          <form class="comment-form">
+            <textarea placeholder="Leave a comment..."></textarea>
+            <button type="submit">Post Comment</button>
+          </form>
+
+          <!-- Comments List -->
+          <div class="comments-list">
+            @for (comment of comments; track comment.id) {
+              <div class="comment">
+                <div class="comment-avatar">{{ getInitials(comment.author) }}</div>
+                <div class="comment-content">
+                  <h5>{{ comment.author }}</h5>
+                  <p>{{ comment.text }}</p>
+                  <span class="comment-date">{{ comment.date | date:'MMM d, y' }}</span>
+                </div>
+              </div>
+            }
+          </div>
+        </section>
+      </main>
+
+      <!-- Sidebar with Multiple Ads -->
+      <aside class="post-sidebar">
+        <!-- Sidebar Ad 1 -->
+        <div class="widget ad-widget">
+          <div class="ad-label">Sponsored</div>
+          <div class="google-ad" id="ad-sidebar-post-1">
+            <!-- 300x600 Half Page -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:600px"
+                 data-ad-client="ca-pub-XXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"></ins>
+          </div>
+        </div>
+
+        <!-- Author Bio -->
+        <div class="widget author-widget">
+          <h4>About the Author</h4>
+          <div class="author-bio">
+            <img [src]="post.authorAvatar" [alt]="post.author">
+            <h5>{{ post.author }}</h5>
+            <p>{{ post.authorBio }}</p>
+          </div>
+        </div>
+
+        <!-- Sidebar Ad 2 -->
+        <div class="widget ad-widget-small">
+          <div class="ad-label">Advertisement</div>
+          <div class="google-ad" id="ad-sidebar-post-2">
+            <!-- 250x250 Square -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:250px;height:250px"
+                 data-ad-client="ca-pub-XXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"></ins>
+          </div>
+        </div>
+
+        <!-- Popular Posts -->
+        <div class="widget popular-widget">
+          <h4>Popular Posts</h4>
+          <div class="popular-list">
+            @for (popular of popularPosts; track popular.id) {
+              <div class="popular-item">
+                <img [src]="popular.imageUrl" [alt]="popular.title">
+                <div class="popular-content">
+                  <h6><a [href]="'/posts/' + popular.slug">{{ popular.title }}</a></h6>
+                  <span>{{ popular.views }} views</span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- Sidebar Ad 3 -->
+        <div class="widget ad-widget-banner">
+          <div class="ad-label">Sponsored</div>
+          <div class="google-ad" id="ad-sidebar-post-3">
+            <!-- 300x100 Banner -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:100px"
+                 data-ad-client="ca-pub-XXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"></ins>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Bottom Ad - After Everything -->
+  <section class="ad-section post-final-ad">
+    <div class="container">
+      <div class="ad-container">
+        <div class="ad-label">Advertisement</div>
+        <div class="google-ad" id="ad-post-final">
+          <!-- 728x90 Bottom Banner -->
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px"
+               data-ad-client="ca-pub-XXXXXXXXXX"
+               data-ad-slot="XXXXXXXXXX"></ins>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

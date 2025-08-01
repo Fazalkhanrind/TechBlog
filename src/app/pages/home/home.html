@@ -1,0 +1,582 @@
+<!-- Hero Section with Animation -->
+<section class="hero">
+  <div class="hero-background">
+    <div class="animated-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-icon">🚀</span>
+        <span>Welcome to the Future of Tech</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="title-main">TechBlog</span>
+        <span class="title-subtitle">Where Innovation Meets Knowledge</span>
+      </h1>
+      <p class="hero-description">
+        Discover cutting-edge technology insights, tutorials, and industry trends. 
+        Join thousands of developers and tech enthusiasts in our community.
+      </p>
+      <div class="hero-actions">
+        <a href="#featured-posts" class="cta-button primary">
+          <span>Explore Latest Posts</span>
+          <i class="arrow">→</i>
+        </a>
+        <a href="#newsletter" class="cta-button secondary">
+          <span>Subscribe Newsletter</span>
+          <i class="icon">📧</i>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">1000+</span>
+          <span class="stat-label">Articles</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">50K+</span>
+          <span class="stat-label">Readers</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">25+</span>
+          <span class="stat-label">Categories</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Google Ad - Top Banner After Hero -->
+<section class="ad-section hero-after-ad">
+  <div class="container">
+    <div class="ad-container">
+      <div class="ad-label">Sponsored Content</div>
+      <div class="google-ad" id="ad-hero-after">
+        <!-- 728x90 Top Banner -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-XXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Categories Section -->
+<section class="quick-categories">
+  <div class="container">
+    <h2 class="section-title">Browse by Category</h2>
+    <div class="categories-grid">
+      @for (category of categories; track category.name) {
+        <div class="category-card" [style.background]="category.gradient">
+          <div class="category-icon">{{ category.icon }}</div>
+          <h3>{{ category.name }}</h3>
+          <p>{{ category.description }}</p>
+          <span class="category-count">{{ category.count }} articles</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Google Ad - Banner After Categories -->
+<section class="ad-section banner-ad">
+  <div class="container">
+    <div class="ad-container">
+      <div class="ad-label">Advertisement</div>
+      <!-- Google AdSense Code will go here -->
+      <div class="google-ad" id="ad-banner-1">
+        <!-- 728x90 Leaderboard Ad -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-XXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Posts Section with Enhanced Design -->
+<section id="featured-posts" class="featured-posts">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">🌟 Featured Articles</h2>
+      <p class="section-subtitle">Handpicked content by our editorial team</p>
+    </div>
+    <div class="posts-grid enhanced">
+      @for (post of featuredPosts; track post.id) {
+        <app-blog-post [post]="post" [featured]="true"></app-blog-post>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Google Ad - Square After Featured Posts -->
+<section class="ad-section square-ad">
+  <div class="container">
+    <div class="ad-container">
+      <div class="ad-label">Advertisement</div>
+      <!-- Google AdSense Code will go here -->
+      <div class="google-ad" id="ad-square-1">
+        <!-- 300x250 Medium Rectangle Ad -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:300px;height:250px"
+             data-ad-client="ca-pub-XXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Signup Section -->
+<section id="newsletter" class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-content">
+      <div class="newsletter-text">
+        <h2>Stay Updated with Latest Tech Trends</h2>
+        <p>Get weekly insights, tutorials, and industry news delivered to your inbox.</p>
+        <div class="newsletter-benefits">
+          <div class="benefit">
+            <span class="benefit-icon">✨</span>
+            <span>Exclusive content</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">📚</span>
+            <span>Free resources</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">🎯</span>
+            <span>No spam, ever</span>
+          </div>
+        </div>
+      </div>
+      <div class="newsletter-form">
+        <form class="signup-form">
+          <div class="form-group">
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit" class="subscribe-btn">
+              <span>Subscribe Now</span>
+              <i class="icon">🚀</i>
+            </button>
+          </div>
+          <p class="privacy-note">
+            <i class="lock-icon">🔒</i>
+            We respect your privacy. Unsubscribe at any time.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Google Ad - After Newsletter -->
+<section class="ad-section newsletter-after-ad">
+  <div class="container">
+    <div class="ad-container">
+      <div class="ad-label">Advertisement</div>
+      <div class="google-ad" id="ad-newsletter-after">
+        <!-- 336x280 Large Rectangle -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:336px;height:280px"
+             data-ad-client="ca-pub-XXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Latest Posts Section with Sidebar -->
+<section class="latest-posts">
+  <div class="container">
+    <div class="content-layout">
+      <div class="main-content">
+        <div class="section-header">
+          <h2 class="section-title">📰 Latest Articles</h2>
+          <a href="/posts" class="view-all-link">View All Posts →</a>
+        </div>
+        <div class="posts-list enhanced">
+          @for (post of latestPosts; track post.id) {
+            <article class="post-item modern">
+              <div class="post-thumbnail">
+                <img [src]="post.imageUrl" [alt]="post.title" loading="lazy">
+                <div class="post-overlay">
+                  <span class="read-time">{{ post.readTime }} min read</span>
+                </div>
+              </div>
+              <div class="post-info">
+                <div class="post-meta-top">
+                  <span class="post-category">{{ post.category }}</span>
+                  <span class="post-date">{{ post.publishDate | date:'MMM d, y' }}</span>
+                </div>
+                <h3><a [href]="'/posts/' + post.slug">{{ post.title }}</a></h3>
+                <p>{{ post.excerpt }}</p>
+                <div class="post-meta-bottom">
+                  <div class="author-info">
+                    <div class="author-avatar">{{ getAuthorInitials(post.author) }}</div>
+                    <span class="author-name">{{ post.author }}</span>
+                  </div>
+                  <div class="post-actions">
+                    <button class="action-btn">
+                      <i class="icon">👍</i>
+                      <span>{{ post.likes || 0 }}</span>
+                    </button>
+                    <button class="action-btn">
+                      <i class="icon">💬</i>
+                      <span>{{ post.comments || 0 }}</span>
+                    </button>
+                    <button class="action-btn">
+                      <i class="icon">🔖</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          }
+        </div>
+      </div>
+      
+      <!-- Enhanced Sidebar -->
+      <aside class="sidebar">
+        <!-- Google Ad - Sidebar -->
+        <div class="widget ad-widget">
+          <div class="ad-label">Sponsored</div>
+          <div class="google-ad" id="ad-sidebar-1">
+            <!-- 300x600 Half Page Ad -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:600px"
+                 data-ad-client="ca-pub-XXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"></ins>
+          </div>
+        </div>
+
+        <!-- Trending Topics -->
+        <div class="widget trending-widget">
+          <h3 class="widget-title">🔥 Trending Now</h3>
+          <div class="trending-list">
+            @for (topic of trendingTopics; track topic.name) {
+              <div class="trending-item">
+                <span class="trending-rank">#{{ topic.rank }}</span>
+                <div class="trending-info">
+                  <span class="trending-name">{{ topic.name }}</span>
+                  <span class="trending-count">{{ topic.mentions }} mentions</span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- Google Ad - Sidebar Square -->
+        <div class="widget ad-widget-small">
+          <div class="ad-label">Sponsored</div>
+          <div class="google-ad" id="ad-sidebar-square">
+            <!-- 250x250 Square Ad -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:250px;height:250px"
+                 data-ad-client="ca-pub-XXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"></ins>
+          </div>
+        </div>
+
+        <!-- Popular Tags -->
+        <div class="widget tags-widget">
+          <h3 class="widget-title">🏷️ Popular Tags</h3>
+          <div class="tags-cloud">
+            @for (tag of popularTags; track tag.name) {
+              <span class="tag" [style.font-size.px]="getTagSize(tag.count)">
+                {{ tag.name }}
+              </span>
+            }
+          </div>
+        </div>
+
+        <!-- Recent Comments -->
+        <div class="widget comments-widget">
+          <h3 class="widget-title">💬 Recent Comments</h3>
+          <div class="comments-list">
+            @for (comment of recentComments; track comment.id) {
+              <div class="comment-item">
+                <div class="comment-avatar">{{ getAuthorInitials(comment.author) }}</div>
+                <div class="comment-content">
+                  <p class="comment-text">{{ comment.text }}</p>
+                  <span class="comment-meta">{{ comment.author }} on {{ comment.post }}</span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Ready to Start Your Tech Journey?</h2>
+      <p>Join our community of developers, designers, and tech enthusiasts.</p>
+      <div class="cta-actions">
+        <a href="/about" class="cta-button primary">Learn More About Us</a>
+        <a href="/contact" class="cta-button secondary">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Google Ad - After CTA -->
+<section class="ad-section cta-after-ad">
+  <div class="container">
+    <div class="ad-container">
+      <div class="ad-label">Advertisement</div>
+      <div class="google-ad" id="ad-cta-after">
+        <!-- 468x60 Banner Ad -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:468px;height:60px"
+             data-ad-client="ca-pub-XXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tech News Section -->
+<section class="tech-news-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">🗞️ Latest Tech News</h2>
+      <p class="section-subtitle">Stay updated with the latest happenings in the tech world</p>
+    </div>
+    <div class="news-grid">
+      @for (news of techNews; track news.id) {
+        <article class="news-card">
+          <div class="news-image">
+            <img [src]="news.imageUrl" [alt]="news.title" loading="lazy">
+            <div class="news-badge">{{ news.source }}</div>
+          </div>
+          <div class="news-content">
+            <div class="news-meta">
+              <span class="news-date">{{ news.publishDate | date:'MMM d, h:mm a' }}</span>
+              <span class="news-category">{{ news.category }}</span>
+            </div>
+            <h3><a [href]="news.url" target="_blank">{{ news.title }}</a></h3>
+            <p>{{ news.summary }}</p>
+            <div class="news-footer">
+              <span class="read-time">{{ news.readTime }} min read</span>
+              <a [href]="news.url" target="_blank" class="read-more">Read More →</a>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Google Ad - Between Content Sections -->
+<section class="ad-section content-ad">
+  <div class="container">
+    <div class="ad-container">
+      <div class="ad-label">Advertisement</div>
+      <!-- Google AdSense Code will go here -->
+      <div class="google-ad" id="ad-content-1">
+        <!-- 970x250 Billboard Ad -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:970px;height:250px"
+             data-ad-client="ca-pub-XXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Author Spotlight Section -->
+<section class="author-spotlight">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">👨‍💻 Author Spotlight</h2>
+      <p class="section-subtitle">Meet our talented contributors</p>
+    </div>
+    <div class="authors-grid">
+      @for (author of featuredAuthors; track author.id) {
+        <div class="author-card">
+          <div class="author-image">
+            <img [src]="author.avatar" [alt]="author.name" loading="lazy" 
+                 (error)="onImageError($event)">
+            <div class="author-badge">
+              <i class="icon">⭐</i>
+              <span>{{ author.articlesCount }} articles</span>
+            </div>
+          </div>
+          <div class="author-info">
+            <h3>{{ author.name }}</h3>
+            <p class="author-title">{{ author.title }}</p>
+            <p class="author-bio">{{ author.bio }}</p>
+            <div class="author-skills">
+              @for (skill of author.skills; track skill) {
+                <span class="skill-tag">{{ skill }}</span>
+              }
+            </div>
+            <div class="author-social">
+              @if (author.twitter) {
+                <a [href]="author.twitter" target="_blank" class="social-link twitter">
+                  <i class="icon">🐦</i>
+                </a>
+              }
+              @if (author.linkedin) {
+                <a [href]="author.linkedin" target="_blank" class="social-link linkedin">
+                  <i class="icon">💼</i>
+                </a>
+              }
+              @if (author.github) {
+                <a [href]="author.github" target="_blank" class="social-link github">
+                  <i class="icon">⚡</i>
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Learning Paths Section -->
+<section class="learning-paths">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">🎯 Learning Paths</h2>
+      <p class="section-subtitle">Structured learning journeys to master new technologies</p>
+    </div>
+    <div class="paths-grid">
+      @for (path of learningPaths; track path.id) {
+        <div class="path-card" [style.background]="path.gradient">
+          <div class="path-header">
+            <div class="path-icon">{{ path.icon }}</div>
+            <div class="path-level">{{ path.level }}</div>
+          </div>
+          <div class="path-content">
+            <h3>{{ path.title }}</h3>
+            <p>{{ path.description }}</p>
+            <div class="path-stats">
+              <div class="stat">
+                <span class="stat-value">{{ path.articlesCount }}</span>
+                <span class="stat-label">Articles</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">{{ path.duration }}</span>
+                <span class="stat-label">Duration</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">{{ path.difficulty }}</span>
+                <span class="stat-label">Difficulty</span>
+              </div>
+            </div>
+            <div class="path-skills">
+              @for (skill of path.skills.slice(0, 3); track skill) {
+                <span class="skill-tag">{{ skill }}</span>
+              }
+              @if (path.skills.length > 3) {
+                <span class="skill-tag more">+{{ path.skills.length - 3 }} more</span>
+              }
+            </div>
+            <button class="start-path-btn">
+              <span>Start Learning</span>
+              <i class="icon">🚀</i>
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Google Ad - After Learning Paths -->
+<section class="ad-section learning-after-ad">
+  <div class="container">
+    <div class="ad-container">
+      <div class="ad-label">Advertisement</div>
+      <div class="google-ad" id="ad-learning-after">
+        <!-- 320x100 Mobile Banner -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:320px;height:100px"
+             data-ad-client="ca-pub-XXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Community Stats Section -->
+<section class="community-stats">
+  <div class="container">
+    <div class="stats-content">
+      <div class="stats-text">
+        <h2>Join Our Growing Community</h2>
+        <p>Be part of a vibrant community of developers, designers, and tech enthusiasts from around the world.</p>
+        <div class="community-features">
+          <div class="feature">
+            <div class="feature-icon">💬</div>
+            <div class="feature-text">
+              <h4>Active Discussions</h4>
+              <p>Engage in meaningful conversations about the latest tech trends</p>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🎓</div>
+            <div class="feature-text">
+              <h4>Learn Together</h4>
+              <p>Share knowledge and learn from experienced professionals</p>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🌟</div>
+            <div class="feature-text">
+              <h4>Career Growth</h4>
+              <p>Access resources and opportunities to advance your career</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">{{ communityStats.totalMembers | number }}</div>
+          <div class="stat-label">Active Members</div>
+          <div class="stat-growth">+{{ communityStats.monthlyGrowth }}% this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">{{ communityStats.totalArticles | number }}</div>
+          <div class="stat-label">Articles Published</div>
+          <div class="stat-growth">+{{ communityStats.weeklyArticles }} this week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">{{ communityStats.totalComments | number }}</div>
+          <div class="stat-label">Community Comments</div>
+          <div class="stat-growth">+{{ communityStats.dailyComments }} today</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">{{ communityStats.countries | number }}</div>
+          <div class="stat-label">Countries</div>
+          <div class="stat-growth">Global reach</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Google Ad - Bottom/Footer Ad -->
+<section class="ad-section footer-ad">
+  <div class="container">
+    <div class="ad-container">
+      <div class="ad-label">Advertisement</div>
+      <div class="google-ad" id="ad-footer">
+        <!-- 728x90 Bottom Banner -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-XXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+      </div>
+    </div>
+  </div>
+</section>

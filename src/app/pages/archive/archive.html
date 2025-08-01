@@ -1,0 +1,178 @@
+<!-- Blog Archive Page with Ads -->
+<div class="archive-page">
+  <!-- Top Banner Ad -->
+  <section class="ad-section archive-top-ad">
+    <div class="container">
+      <div class="ad-container">
+        <div class="ad-label">Advertisement</div>
+        <div class="google-ad" id="ad-archive-top">
+          <!-- 970x250 Billboard -->
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:970px;height:250px"
+               data-ad-client="ca-pub-XXXXXXXXXX"
+               data-ad-slot="XXXXXXXXXX"></ins>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="archive-layout">
+      <main class="archive-main">
+        <div class="page-header">
+          <h1>Blog Archive</h1>
+          <p class="archive-subtitle">Browse all our articles by month and year</p>
+        </div>
+
+        <!-- Ad After Header -->
+        <section class="ad-section archive-header-ad">
+          <div class="ad-container">
+            <div class="ad-label">Sponsored</div>
+            <div class="google-ad" id="ad-archive-header">
+              <!-- 728x90 Leaderboard -->
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:728px;height:90px"
+                   data-ad-client="ca-pub-XXXXXXXXXX"
+                   data-ad-slot="XXXXXXXXXX"></ins>
+            </div>
+          </div>
+        </section>
+
+        <!-- Archive Year Sections -->
+        <div class="archive-years" *ngFor="let year of archiveData; let yearIndex = index">
+          <div class="year-header">
+            <h2>{{ year.year }}</h2>
+            <span class="post-count">{{ year.totalPosts }} posts</span>
+          </div>
+
+          <!-- Ad After Every 2nd Year -->
+          <section *ngIf="yearIndex > 0 && yearIndex % 2 === 0" class="ad-section archive-year-ad">
+            <div class="ad-container">
+              <div class="ad-label">Advertisement</div>
+              <div class="google-ad" id="ad-archive-year-{{yearIndex}}">
+                <!-- 336x280 Large Rectangle -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:336px;height:280px"
+                     data-ad-client="ca-pub-XXXXXXXXXX"
+                     data-ad-slot="XXXXXXXXXX"></ins>
+              </div>
+            </div>
+          </section>
+
+          <div class="archive-months">
+            <div class="month-section" *ngFor="let month of year.months; let monthIndex = index">
+              <h3>{{ month.name }}</h3>
+              <div class="month-posts">
+                <article class="archive-post" *ngFor="let post of month.posts; let postIndex = index">
+                  <div class="post-date">{{ post.date | date:'MMM d' }}</div>
+                  <div class="post-content">
+                    <h4><a [routerLink]="['/blog', post.slug]">{{ post.title }}</a></h4>
+                    <p class="post-excerpt">{{ post.excerpt }}</p>
+                    <div class="post-meta">
+                      <span class="category">{{ post.category }}</span>
+                      <span class="read-time">{{ post.readTime }} min read</span>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Ad After Every 5th Post -->
+                <section *ngIf="postIndex > 0 && (postIndex + 1) % 5 === 0" class="ad-section archive-post-ad">
+                  <div class="ad-container">
+                    <div class="ad-label">Sponsored</div>
+                    <div class="google-ad" id="ad-archive-post-{{yearIndex}}-{{monthIndex}}-{{postIndex}}">
+                      <!-- 300x250 Medium Rectangle -->
+                      <ins class="adsbygoogle"
+                           style="display:inline-block;width:300px;height:250px"
+                           data-ad-client="ca-pub-XXXXXXXXXX"
+                           data-ad-slot="XXXXXXXXXX"></ins>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Banner Ad -->
+        <section class="ad-section archive-bottom-ad">
+          <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <div class="google-ad" id="ad-archive-bottom">
+              <!-- 728x90 Bottom Banner -->
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:728px;height:90px"
+                   data-ad-client="ca-pub-XXXXXXXXXX"
+                   data-ad-slot="XXXXXXXXXX"></ins>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Sidebar with Ads -->
+      <aside class="archive-sidebar">
+        <!-- Sidebar Ad 1 -->
+        <section class="ad-section archive-sidebar-ad-1">
+          <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <div class="google-ad" id="ad-archive-sidebar-1">
+              <!-- 300x600 Half Page -->
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:300px;height:600px"
+                   data-ad-client="ca-pub-XXXXXXXXXX"
+                   data-ad-slot="XXXXXXXXXX"></ins>
+            </div>
+          </div>
+        </section>
+
+        <!-- Popular Posts Widget -->
+        <div class="widget popular-posts">
+          <h3>Popular This Month</h3>
+          <div class="popular-list">
+            <a href="#" class="popular-item" *ngFor="let post of popularPosts">
+              <div class="popular-thumbnail">
+                <img [src]="post.thumbnail" [alt]="post.title">
+              </div>
+              <div class="popular-content">
+                <h4>{{ post.title }}</h4>
+                <span class="popular-views">{{ post.views }} views</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Sidebar Ad 2 -->
+        <section class="ad-section archive-sidebar-ad-2">
+          <div class="ad-container">
+            <div class="ad-label">Sponsored</div>
+            <div class="google-ad" id="ad-archive-sidebar-2">
+              <!-- 300x250 Medium Rectangle -->
+              <ins class="adsbygoogle"
+                   style="display:inline-block;width:300px;height:250px"
+                   data-ad-client="ca-pub-XXXXXXXXXX"
+                   data-ad-slot="XXXXXXXXXX"></ins>
+            </div>
+          </div>
+        </section>
+
+        <!-- Archive Stats Widget -->
+        <div class="widget archive-stats">
+          <h3>Archive Statistics</h3>
+          <div class="stats-list">
+            <div class="stat-item">
+              <span class="stat-label">Total Posts:</span>
+              <span class="stat-value">{{ getTotalPosts() }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Categories:</span>
+              <span class="stat-value">{{ getTotalCategories() }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Authors:</span>
+              <span class="stat-value">{{ getTotalAuthors() }}</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
